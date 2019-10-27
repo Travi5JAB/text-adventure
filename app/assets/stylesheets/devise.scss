@@ -1,0 +1,332 @@
+.shatter{
+  background-image: image-url('shattered-glass.png');
+  z-index:1;
+  width: 100%;
+  height: 800px;
+  margin-top: 600px;
+  animation-name: shatterBackground;
+  animation-duration: .3s;
+}
+
+
+//////////////////////
+#logo-sign-in{
+  text-align: center;
+  margin-top: -600px;
+}
+.devise{
+  animation-name: fallIn;
+  animation-duration: .3s;
+  background-color: white;
+  border-radius: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  box-shadow:
+  2px 5px 10px 3px rgba(0, 0, 0, 0.5),
+  2px 5px 20px 8px rgba(0, 0, 0, 0.3);
+
+  display: grid;
+  grid-template-columns: 120px 15px auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "title titleBreak form";
+  z-index: 5;
+}
+
+  .devise .title{
+    grid-area: title;
+  }
+    .devise .title h2{
+      margin: 0;
+      margin-bottom: 15px;
+    }
+  .devise .title .links{
+    animation-duration: 5s;
+    animation-name: cancelFadeIn;
+  }
+  .devise #titleBreak{
+    grid-area: titleBreak;
+    animation-duration: 2s;
+    animation-name: breakExpand;
+    height: 100%;
+  }
+  .devise .form{
+    grid-area: form;
+    animation-duration: 2s;
+    animation-name: formExpand;
+    overflow: hidden;
+    transition: max-height 0.4s;
+    z-index: 5;
+  }
+    .devise .form .field{
+
+    }
+      .devise .form .field h3{
+        margin: 0
+      }
+
+// logInForm
+#logInForm{
+
+}
+  #logInForm .form{
+    display: grid;
+    grid-template-columns: 15px 40% 40% 20%;
+    grid-template-rows: 35px 100px 25px 35px;
+    grid-template-areas:
+    ". . . ."
+    ". username password ."
+    ". rememberMe . actions"
+    ". . . .";
+  }
+    #logInForm .form #username{
+      grid-area: username;
+    }
+      #logInForm .form #username input{
+        height: 25px;
+        width: 250px;
+        font-size: 20px;
+      }
+    #logInForm .form #password{
+      grid-area: password;
+    }
+      #logInForm .form #password input{
+        height: 25px;
+        width: 250px;
+        font-size: 20px;
+      }
+    #logInForm .form #rememberMe{
+      grid-area: rememberMe;
+    }
+    #logInForm .form .actions{
+      grid-area: actions;
+    }
+      #logInForm .form .actions input{
+        background-color: #fcae30;
+        color: white;
+        width: 150px;
+        height: 35px;
+        border-radius: 15px;
+        border-style: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #logInForm .form .actions input:hover{
+        background-color: #d99221;
+        transform: translateY(5px);
+      }
+
+
+////// signUpForm
+#signUpForm{
+
+}
+  #signUpForm .form{
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-rows: 35px 100px 75px 25px 35px;;
+    grid-template-areas:
+    ". . . ."
+    ". email username ."
+    ". password passwordConfirmation ."
+    ". . . actions"
+    ". . . .";
+  }
+  #signUpForm .form #email{
+    grid-area: email;
+  }
+    #signUpForm .form #email input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #signUpForm .form #username{
+    grid-area: username;
+  }
+    #signUpForm .form #username input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #signUpForm .form #password{
+    grid-area: password;
+  }
+    #signUpForm .form #password input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #signUpForm .form #passwordConfirmation{
+    grid-area: passwordConfirmation;
+  }
+    #signUpForm .form #passwordConfirmation input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #signUpForm .form .actions{
+    grid-area: actions;
+  }
+    #signUpForm .form .actions input{
+      background-color: #fcae30;
+      color: white;
+      width: 150px;
+      height: 35px;
+      border-radius: 15px;
+      border-style: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    #signUpForm .form .actions input:hover{
+      background-color: #d99221;
+      transform: translateY(5px);
+    }
+
+////// editForm
+#editForm{
+
+}
+  #editForm .title{
+
+  }
+    #editForm .title #titleBreakHorizontal{
+      animation-duration: 5s;
+      animation-name: breakExpandHorizontal;
+      margin-right: 5px;
+    }
+    #editForm .title .cancelDiv{
+      animation-duration: 5s;
+      animation-name: cancelFadeIn;
+    }
+      #editForm .title .cancelDiv input{
+        background-color: #fcae30;
+        color: white;
+        width: 110px;
+        height: 35px;
+        margin-left: -10px;
+        border-radius: 15px;
+        border-style: none;
+        font-size: 10px;
+        cursor: pointer;
+      }
+      #editForm .title .cancelDiv input:hover{
+        background-color: #d99221;
+        transform: translateY(5px);
+      }
+  #editForm .form{
+    display:grid;
+    grid-template-columns: 15px auto;
+    grid-template-rows: 35px 100px 120px 100px 25px 35px;;
+    grid-template-areas:
+    ". . . ."
+    ". email username ."
+    ". newPassword passwordConfirmation ."
+    ". currentPassword . ."
+    ". . . actions"
+    ". . . .";
+  }
+  #editForm .form #email{
+    grid-area: email;
+  }
+    #editForm .form #email input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #editForm .form #username{
+    grid-area: username;
+  }
+    #editForm .form #username input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #editForm .form #newPassword{
+    grid-area: newPassword;
+  }
+    #editForm .form #newPassword input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+  #editForm .form #passwordConfirmation{
+    grid-area: passwordConfirmation;
+  }
+    #editForm .form #passwordConfirmation input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+
+  #editForm .form #currentPassword{
+    grid-area: currentPassword;
+  }
+    #editForm .form #currentPassword input{
+      height: 25px;
+      width: 250px;
+      font-size: 20px;
+    }
+
+  #editForm .form .actions{
+    grid-area: actions;
+  }
+    #editForm .form .actions input{
+      background-color: #fcae30;
+      color: white;
+      width: 150px;
+      height: 35px;
+      border-radius: 15px;
+      border-style: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    #editForm .form .actions input:hover{
+      background-color: #d99221;
+      transform: translateY(5px);
+    }
+
+/////forgot password
+#forgotPassword{
+
+}
+  #forgotPassword .form{
+    display:grid;
+    grid-template-columns: 15px 60% auto;
+    grid-template-rows: 35px 150px 25px 35px;;
+    grid-template-areas:
+    ". . . "
+    ". email ."
+    ". . actions"
+    ". . . ";
+  }
+    #forgotPassword .form #email{
+      grid-area: email;
+    }
+      #forgotPassword .form #email input{
+        height: 25px;
+        width: 300px;
+        font-size: 20px;
+      }
+    #forgotPassword .form .actions{
+      grid-area: actions;
+    }
+      #forgotPassword .form .actions input{
+        background-color: #fcae30;
+        color: white;
+        width: auto;
+        height: 35px;
+        border-radius: 15px;
+        border-style: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #forgotPassword .form .actions input:hover{
+        background-color: #d99221;
+        transform: translateY(5px);
+      }

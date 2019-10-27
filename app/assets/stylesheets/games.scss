@@ -1,0 +1,43 @@
+.gamesHeader{
+  font-size: 50px;
+}
+.home #titleBreak{
+  animation-duration: 2s;
+  animation-name: breakExpand2;
+}
+  .games{
+    display: flex;
+    flex-wrap: wrap;
+    animation-duration: 2s;
+    animation-name: formExpand;
+  }
+  #game{
+    background-color: red;
+    border-radius: 20px;
+    margin: 20px;
+    position: relative;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    z-index: 1;
+  }
+    #game #slideinfo {
+      color: #fff;
+      background-color: black;
+      font-size: 20px;
+      margin-top: -5px;
+      padding-top: 5px;
+      opacity: .65;
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      visibility: hidden;
+      z-index: 1;
+    }
+    #game:hover #slideinfo {
+      visibility: visible;
+    }
+    #game img{
+      height: 200px;
+      width: 200px;
+    }

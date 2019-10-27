@@ -1,0 +1,18 @@
+<div class = "shatter2">
+
+  <div id = "main" class = "home">
+
+    <div id = "content">
+      <%= render :partial => "pages/games"  if controller_name == "pages" %>
+    </div>
+
+    <footer>
+      <p class = "copyright">&copy Text Game</p>
+      <div class = "footerLogo">
+        <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
+      </div>
+    </footer>
+    
+  </div>
+
+</div>

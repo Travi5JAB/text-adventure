@@ -1,0 +1,49 @@
+<div class = "shatter">
+  <div id = "logo-sign-in">
+    <%=image_tag("Text-game-logo-large.png", alt:"text game logo")%>
+  </div>
+
+  <div class = "devise" id = "logInForm">
+
+    <div class = "title">
+      <h2>Log in</h2>
+      <div class="links">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+
+    <hr id = "titleBreak"/>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form">
+        <div class="field" id = "username">
+          <h3>
+            <%= f.label :username %>
+          </h3>
+          <br />
+          <%= f.text_field :username, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field" id = "password">
+          <h3>
+            <%= f.label :password %>
+          </h3>
+          <br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field" id = "rememberMe">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

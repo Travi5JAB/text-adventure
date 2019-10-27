@@ -1,0 +1,15 @@
+.shatter2{
+  background-image: image-url('shattered-glass.png');
+  background-repeat: no-repeat;
+  z-index: 99;
+  width: 100%;
+  height: 800px;
+  animation-name: shatterBackground;
+  animation-duration: .3s;
+  padding-top: 120px;
+  margin-top: -100px;
+}
+.home{
+  animation-name: fallIn;
+  animation-duration: .3s;
+}

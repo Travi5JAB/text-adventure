@@ -1,0 +1,34 @@
+<div class = "shatter">
+  <div id = "logo-sign-in">
+    <%=image_tag("Text-game-logo-large.png", alt:"text game logo")%>
+  </div>
+
+  <div class = "devise" id = "forgotPassword">
+    <div class = "title">
+      <h2>Forgot your password?</h2>
+      <div class = "links">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+
+    <hr id = "titleBreak"/>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <div class = "form">
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field" id = "email">
+          <h3>
+            <%= f.label :email %>
+          </h3>
+          <br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+.navBar{
+  background-color: #e3e1e1;
+  overflow: visible;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+  box-shadow:
+  2px 0 4px 20px rgba(0, 0, 0, 0.1),
+  2px 0 4px 10px rgba(0, 0, 0, 0.2),
+  2px 0 4px 5px rgba(0, 0, 0, 0.3);
+
+  display: grid;
+  grid-template-rows: 80px;
+  grid-template-columns: 20px auto;
+  grid-template-areas:
+  ". logo . username";
+}
+  .navBar .logo{
+    grid-area: logo;
+    position: relative;
+    margin-top: 15px;
+    top: 0px;
+  }
+    .navBar .logo img{
+      height: 150px;
+      width: 150px;
+      padding: 0;
+      cursor: pointer;
+    }
+  .navBar .username{
+    grid-area: username;
+    text-align: right;
+  }
+    .navBar .username button{
+      background-color: #e3e1e1;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  .navBar .username .dropdown-links {
+    display: none;
+    text-align: right;
+    position: absolute;
+    min-width: 160px;
+    right: 0;
+    z-index: 1;
+  }
+  .username:hover .dropdown-links{
+    display: block;
+    border-radius: 20px 20px 0px 0px;
+  }
+    .dropdown-links #invisable{
+      background-color: rbga(1,1,1,0);
+      opacity: 0;
+    }
+      .dropdown-links #invisable:hover{
+        width:50px;
+    }
+    .dropdown-links a {
+      background-color: #f1f1f1;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 5px;
+      width: 160px;
+      right: 0;
+      border-radius: 30px 0 0 30px;
+      margin-left: auto;
+    }
+      .dropdown-links a:hover {
+        animation-name: tab-expand;
+        animation-duration: .5s;
+        background-color: #dbdbdb;
+        border-left: solid #c98a26;
+        border-left-width: 10px;
+        padding-right: 80px;
+        text-align: center;
+        border-radius: 0;
+      }
+
+  .navBar .logOutButton{
+    grid-area: logOutButton;
+    background-color: #e3e1e1;
+    border: none;
+  }
+    .navBar .logOutButton a{
+      text-decoration: none;
+      color: black;
+    }
+    .navBar .logOutButton a:hover{
+      color: #c98a26;
+    }
+
+
+#buffer{
+  height: 100px;
+}
