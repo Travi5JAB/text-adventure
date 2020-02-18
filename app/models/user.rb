@@ -2,11 +2,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :authentication_keys => [:username]
+         :recoverable, :rememberable, :validatable
 
-  validates :email, uniqueness: true
-  validates :username, uniqueness: true
+
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   def email_changed?
     false
@@ -21,5 +21,17 @@ class User < ApplicationRecord
     conditions[:username].capitalize!
     super(conditions)
   end
+
+
+# redirect to
+  # def after_sign_in_path_for(user)
+  #   cookies[:name] = current_user.username
+  #   "/"
+  # end
+  #
+  # def after_sign_up_path_for(user)
+  #   cookies[:name] = current_user.username
+  #   "/text_adventure_home"
+  # end
 
 end

@@ -6,7 +6,7 @@
   <div class = "devise" id = "logInForm">
 
     <div class = "title">
-      <h2>Log in</h2>
+      <h2>Log In</h2>
       <div class="links">
         <%= render "users/shared/links" %>
       </div>
@@ -14,14 +14,14 @@
 
     <hr id = "titleBreak"/>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: new_session_path(resource_name)) do |f| %>
       <div class="form">
         <div class="field" id = "username">
           <h3>
             <%= f.label :username %>
           </h3>
           <br />
-          <%= f.text_field :username, autofocus: true, autocomplete: "email" %>
+          <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
         </div>
 
         <div class="field" id = "password">

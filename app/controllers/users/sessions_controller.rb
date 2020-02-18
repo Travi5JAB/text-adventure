@@ -4,11 +4,11 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    super do |resource|
-    end
+  # def new
+  #   super do |resource|
+  #   end
   #   user ||= (User.find_by(email: params[:user][:login]) || User.find_by(username: params[:user][:login]))
-  end
+  # end
 
   # POST /resource/sign_in
   # def create

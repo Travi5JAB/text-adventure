@@ -1,24 +1,19 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
-
+  # before_action :authenticate_user!
 
   protected
 
   def configure_permitted_parameters
-    @keys = [:username, :email, :password]
+    @keys = %i[
+      :username
+      :email
+    ]
     devise_parameter_sanitizer.permit(:sign_up, keys: @keys)
     devise_parameter_sanitizer.permit(:account_update, keys: @keys)
-  end
-
-  def after_sign_in_path_for(user)
-    cookies[:name] = current_user.username
-    "/"
-  end
-
-  def after_sign_up_path_for(user)
-    cookies[:name] = current_user.username
-    "/text_adventure_home"
+    devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+      user_params.permit(:username, :email)
+    end
   end
 
 end

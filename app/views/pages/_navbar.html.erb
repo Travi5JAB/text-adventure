@@ -1,20 +1,26 @@
 <div class = "navBar">
+
   <div class = "logo" onclick = "window.location.href = '/'">
     <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
   </div>
 
   <div class = "username">
+
     <button>
       <h3>
         <%= current_user.username %> ▿
       </h3>
     </button>
+
     <div class = "dropdown-links">
       <a id = "invisable"></a>
       <a class = "profilePage" href="/profile/<%= current_user.id %>">Profile Page</a>
       <a class = "editInfo" href="/users/edit">Edit Info</a>
       <a class = "logOut" href="/users/sign_out">Log Out</a>
     </div>
+    
   </div>
+
 </div>
+
 <div id = "buffer"></div>
