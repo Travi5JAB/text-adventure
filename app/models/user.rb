@@ -34,10 +34,4 @@ class User < ApplicationRecord
     "/"
   end
 
-  attr_writer :login
-
-  def login
-    @login || self.username || self.email
-  end
-
 end
