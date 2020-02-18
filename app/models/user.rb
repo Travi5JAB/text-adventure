@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
+         :recoverable, :rememberable, :validatable,
+         authentication_keys: [:username]
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
@@ -24,14 +24,20 @@ class User < ApplicationRecord
 
 
 # redirect to
-  # def after_sign_in_path_for(user)
-  #   cookies[:name] = current_user.username
-  #   "/"
-  # end
-  #
-  # def after_sign_up_path_for(user)
-  #   cookies[:name] = current_user.username
-  #   "/text_adventure_home"
-  # end
+  def after_sign_in_path_for(user)
+    cookies[:name] = current_user.username
+    "/"
+  end
+
+  def after_sign_up_path_for(user)
+    cookies[:name] = current_user.username
+    "/"
+  end
+
+  attr_writer :login
+
+  def login
+    @login || self.username || self.email
+  end
 
 end
