@@ -12,9 +12,10 @@
   <body>
     <% if current_user%>
       <%= render :partial => "pages/navbar"  if controller_name == "pages" %>
+      <p class="notice" id="notice"><%= notice %></p>
+      <p class="alert" id="alert"><%= alert %></p>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>

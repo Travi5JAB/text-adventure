@@ -82,3 +82,33 @@ button{
 #content{
   margin: 20px;
 }
+
+/* notifications and alerts */
+
+#notice{
+  width: 60%;
+  font-size: 30px;
+}
+#alert{
+  font-size: 30px;
+  width: 60%;
+}
+.notice{
+  background-color: green;
+  color:white;
+  text-align: center;
+  margin-left: 20%;
+}
+.alert{
+  background-color: #fcae30;
+  color:white;
+  text-align: center;
+  margin-left: 20%;
+}
+.title .notice{
+  margin-left: -40px;
+}
+.title .alert{
+  margin-top: -20px;
+  margin-left: -40px;
+}
