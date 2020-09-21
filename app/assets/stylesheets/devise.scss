@@ -330,3 +330,13 @@
         background-color: #d99221;
         transform: translateY(5px);
       }
+
+// remove error header
+.title #error_explanation {
+  color: white;
+  margin-left: -80px;
+  width: 200px;
+  background-color: #8a0a03;
+  padding-right: 7px;
+  font-size: 20px;
+}

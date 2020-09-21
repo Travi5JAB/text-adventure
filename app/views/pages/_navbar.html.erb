@@ -1,4 +1,4 @@
-<div class = "navBar">
+<div class = "navBar" id="nav">
 
   <div class = "logo" onclick = "window.location.href = '/'">
     <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
@@ -14,11 +14,13 @@
 
     <div class = "dropdown-links">
       <a id = "invisable"></a>
+      <a class = "discover" href="/">Discover</a>
       <a class = "profilePage" href="/profile/<%= current_user.id %>">Profile Page</a>
+      <a class = "myGames" href="/playhistory">Play History</a>
       <a class = "editInfo" href="/users/edit">Edit Info</a>
       <a class = "logOut" href="/users/sign_out">Log Out</a>
     </div>
-    
+
   </div>
 
 </div>

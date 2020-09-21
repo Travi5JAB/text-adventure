@@ -5,14 +5,9 @@
     <div id = "content">
       <%= render :partial => "pages/games"  if controller_name == "pages" %>
     </div>
-
-    <footer>
-      <p class = "copyright">&copy Text Game</p>
-      <div class = "footerLogo">
-        <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-      </div>
-    </footer>
     
+    <%= render :partial => "pages/footer" if controller_name == "pages" %>
+
   </div>
 
 </div>

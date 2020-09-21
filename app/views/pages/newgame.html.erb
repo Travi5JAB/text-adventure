@@ -1,0 +1,42 @@
+<head>
+  <%= csrf_meta_tags %>
+</head>
+
+<div class="new_game" id = "main">
+  <div class="new_game_form_container" id= "form content">
+    <h1 id="title">Upload Your Game</h1>
+    <form class="new_game_form" action="/add_game" method="POST">
+      <div class="creator">
+        <label>Uploader: </label>
+        <input type="text" name="games[creator]" value="<%=current_user.username%>" readonly>
+      </div>
+
+      <div class="creator_id">
+        <label>ID:</label>
+        <input type="text" name="games[user_id]" value="<%=current_user.id%>" readonly>
+      </div>
+
+      <div class="name">
+        <label>Game Name: </label>
+        <input type="text" name = "games[name]" value="">
+      </div>
+
+      <div class="url">
+        <label>URL: </label>
+        <input type="text" name="games[webpage]" value="">
+      </div>
+
+      <div class="category">
+        <label>Category: </label>
+        <input type="text" name="games[category]" value="">
+      </div>
+
+      <div class="submit">
+        <input type="submit" class="submit" value = "Submit Game">
+      </div>
+
+    </form>
+  </div>
+
+  <%= render :partial => "pages/footer" if controller_name == "pages" %>
+</div>

@@ -12,9 +12,16 @@
   <body>
     <% if current_user%>
       <%= render :partial => "pages/navbar"  if controller_name == "pages" %>
+
+      <% flash.each do |key, msg| -%>
+        <% if flash.alert%>
+          <%= content_tag :div, msg.html_safe, class: "alert", id: "alert"%>
+        <% elsif flash.notice%>
+          <%= content_tag :div, msg.html_safe, class: "notice", id: "notice"%>
+        <% end %>
+      <% end -%>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>

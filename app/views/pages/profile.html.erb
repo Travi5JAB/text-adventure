@@ -1,14 +1,75 @@
 <div class = "profile" id = "main">
 
-  <div class="" id = "content">
-    <h1><%=@user.username%></h1>
+  <div class="content" id = "content">
+    <h1 id="title"><%=@user.username%></h1>
+    <%if @user.id === current_user.id%>
+      <h2><%=@user.email%></h2>
+      <a href="/uploadmygame">Upload a Game</a>
+    <%end%>
   </div>
 
-  <footer>
-    <p class = "copyright">&copy Text Game</p>
-    <div class = "footerLogo">
-      <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-    </div>
-  </footer>
+  <hr id = "titleBreak"/>
+  <h2><%=@user.username%>'s Games:</h2>
+  <div class="my_games_list">
+    <% @my_games.each do |l| -%>
+      <a href="/pages/<%=l.id%>" id="game">
+        <li class="game">
+          <p id="slideinfo">
+            <%=l.name%>
+          </p>
+        </li>
+        <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
+      </a>
+    <% end %>
+  </div>
 
+  <%= render :partial => "pages/footer" if controller_name == "pages" %>
+</div>
+<!-- end main div -->
+
+<div class="reports_shell">
+  <h1>Games Report</h1>
+  <h3>Number of Games: <%=@my_games.length%></h3>
+  <h3>Number of Plays: <%=%></h3>
+  <h3>Number of Reports: <%=@total_reports.length%></h3>
+  <h3>Number of Ratings: <%=@total_ratings.length%></h3>
+  <h3>Average Rating: <%=@all_game_avg.round(2)%></h3>
+  <hr>
+  <h1>Breakdown</h1>
+  <div class="games_report">
+    <% @use.each do |game| %>
+      <% @total = 0 %>
+      <% @avg = [] %>
+      <a href="/reportinfo/<%=game.id%>" class="game_report_info" id="game">
+        <li id="top_li">
+          <h3><%=game.name%></h3>
+        </li>
+
+        <!-- get average rarting for each game only displays if at least 1 rating -->
+        <li>
+          <% game.ratings.each_with_index do |rating, ind| %>
+            <% @total = @total + rating.score %>
+            <% @avg << @total.to_f/game.ratings.length%>
+            <% @use_me = @avg.last%>
+            <% if ind == game.ratings.length - 1 %>
+              Avg. Rating: <%= @use_me %>
+            <% end %>
+          <% end %>
+        </li>
+
+        <li>
+          Reports: <%=game.reports.length%>
+        </li>
+
+        <li>
+          Plays:
+        </li>
+
+        <!-- click thru rate (visits to personal site) -->
+        <li>
+          CtR:
+        </li>
+      </a>
+    <% end %>
+  </div>
 </div>

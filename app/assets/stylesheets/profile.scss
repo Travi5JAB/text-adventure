@@ -1,0 +1,64 @@
+// profile section
+.profile{
+}
+  .profile .content{
+  }
+  .profile h2{
+    margin-left: 10px;
+  }
+  .profile .my_games_list{
+    list-style: none;
+    display: flex;
+    margin-bottom: 10px;
+  }
+    .my_games_list a{
+      height: 200px;
+      width: 200px;
+      margin:20px;
+      text-decoration: none;
+      color: white;
+    }
+    .my_games_list a .game{
+    }
+      .my_games_list .game img{
+        height: 100px !important;
+        width: 100px !important;
+      }
+.reports_shell{
+  margin: 15px;
+  color: white;
+  overflow: visible;
+}
+  .reports_shell h1{
+    margin-top: 30px;
+    text-align: center;
+  }
+  .reports_shell h3{
+
+  }
+  .reports_shell hr{
+    transform: translateX(-10%);
+    margin-top: 40px;
+    width: 200%;
+    border-top: 1px solid white;
+  }
+  .games_report{
+    display: flex;
+  }
+    .games_report .game_report_info{
+      color: white;
+      box-shadow:
+        8px 15px 10px 15px rgba(0, 0, 0, 0.1),
+        6px 11px 10px 10px rgba(0, 0, 0, 0.1),
+        4px 10px 10px 5px rgba(0, 0, 0, 0.2);
+    }
+    .games_report .game_report_info:hover{
+      box-shadow: 2px 1px 1px 1px rgba(0, 0, 0, 0.3);
+      transform: translateY(2px);
+    }
+      .game_report_info #top_li{
+        margin-top: 25px;
+      }
+      .game_report_info li{
+        margin-top: 10px;
+      }

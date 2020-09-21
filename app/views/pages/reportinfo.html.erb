@@ -1,0 +1,35 @@
+<div class="report_info" id="main">
+  <div class="content" id="content">
+    <div class="head">
+      <h1 id="title">Reports on <%=@game.name%></h1>
+      <div class="back_button">
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+    <% if @report.length == 0 %>
+      <h2>There are NO Reports on this Game</h2>
+    <% end %>
+    <a href="/report/<%=@game.id%>">Report This Game</a>
+    <hr>
+    <div class="table">
+      <% @report.each do |l| -%>
+      <div class="report_data">
+        <li class = "reason">
+          <h2>Reason for Report:</h2>
+          <h4><%=l.reason%></h4>
+        </li>
+        <li class = "time">
+          <h2>Reported On:</h2>
+          <!-- shorten this string -->
+          <h4><%=l.created_at.to_s[0,16]%></h4>
+        </li>
+        <li class = "notes">
+          <h2>Reporter Notes:</h2>
+          <h4><%=l.notes%></h4>
+        </li>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => "pages/footer" if controller_name == "pages" %>
+</div>

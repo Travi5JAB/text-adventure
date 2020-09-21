@@ -1,3 +1,382 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// show section
+.game_screen{
+  height: 140% !important;
+  overflow: hidden;
+}
+  .game_screen .header{
+    display: grid;
+    grid-template-columns: 40% 50% 10%;
+    grid-template-rows: 70% 30%;
+    grid-template-areas:
+    ". name ."
+    "profile . fullScreen";
+  }
+    .game_screen .header input{
+      grid-area: fullScreen;
+      margin-top: 10px;
+      height: 20px;
+      width: 100px;
+    }
+    .game_screen .header h1{
+      grid-area: name;
+      padding-left: 20px;
+    }
+    .game_screen .header h3{
+      grid-area: profile;
+      padding-left: 25px;
+    }
+  .game_screen .game_section{
+    z-index: 10;
+    padding-top: 1px;
+    text-align: center;
+    min-width: 250px;
+    min-height: 250px;
+    height: 85%;
+    background-color: black;
+    color: white;
+  }
+
+  // rating section
+  .rating{
+    margin: 10px;
+    color: white;
+    display: grid;
+    grid-template-columns: 25% 10% 65%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "h2 h2 ."
+    "stars . .";
+  }
+    .rating h2{
+      grid-area: h2;
+    }
+    .star_group {
+      grid-area: stars;
+      font-size: 0;
+      unicode-bidi: bidi-override;
+      direction: rtl;
+    }
+    .star_group * {
+      font-size: 2rem;
+    }
+    .star_group > .rating_radio {
+      display: none;
+    }
+    .star_group > input + label {
+      display: inline-block;
+      overflow: hidden;
+      text-indent: 9999px;
+      width: 1em;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .star_group > input + label:before {
+      display: inline-block;
+      text-indent: -9999px;
+      content: "☆";
+      color: #888;
+    }
+    .star_group > input:checked ~ label:before, .star_group > input + label:hover ~ label:before, .star_group > input + label:hover:before {
+      content: "★";
+      color: #e52;
+      text-shadow: 0 0 1px #333;
+    }
+    .star_group > .star_clear + label {
+      text-indent: -9999px;
+      width: .5em;
+      margin-left: -.5em;
+    }
+    .star_group > .star_clear + label:before {
+      width: .5em;
+    }
+    .star_group:hover > input + label:before {
+      content: "☆";
+      color: #888;
+      text-shadow: none;
+    }
+    .star_group:hover > input + label:hover ~ label:before, .star_group:hover > input + label:hover:before {
+      content: "★";
+      color: #e52;
+      text-shadow: 0 0 1px #333;
+    }
+    .rating .star_group #submit{
+      background-color: #ed8200;
+      border: none;
+      border-radius: 30px;
+      height: 30px;
+      color: white;
+      font-size: 25px;
+      box-shadow:
+        2px 0 4px 0 rgba(0, 0, 0, 0.5),
+        2px 5px 5px 3px rgba(0, 0, 0, 0.6);
+      margin-left: 30px;
+    }
+      .rating .star_group #submit:hover{
+        background-color: #d67600;
+        color: #dbd9d9;
+        transform: translateY(5px);
+        box-shadow:
+          2px 0 4px 1px rgba(0, 0, 0, 1);
+      }
+  // end rating
+
+  // game info section
+  .game_info{
+    margin: 10px;
+    color: white;
+  }
+    .game_info h4{
+      margin-left: 10px;
+    }
+  // end game info
+// end of show
+
+// newgame section
+.new_game_form_container{
+  margin: 20px;
+}
+.new_game_form{
+  display: grid;
+  grid-template-columns: 70% 15% 15%;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "creator creator creator_id"
+  "name name name"
+  "url url url"
+  "category category category"
+  "submit submit submit";
+}
+  .new_game_form input:focus{
+    background-color: #ed8200;
+    color: white;
+    border: none;
+  }
+  .new_game_form .creator{
+    grid-area: creator;
+    background-color: #a3a3a3;
+    padding-left: 5px;
+  }
+    .new_game_form .creator label{
+      margin: 10px;
+    }
+    .new_game_form .creator input{
+      background-color: #a3a3a3;
+      border: none;
+      font-size: 20px;
+    }
+  .new_game_form .creator_id{
+    grid-area: creator_id;
+    background-color: #a3a3a3;
+  }
+      .new_game_form .creator_id label{
+        margin: 10px;
+      }
+    .new_game_form .creator_id input{
+      background-color: #a3a3a3;
+      border: none;
+      font-size: 20px;
+      width: 50px;
+    }
+  .new_game_form .name{
+    grid-area: name;
+    margin-top: 20px;
+  }
+    .new_game_form .name label{
+      margin-bottom: 10px;
+    }
+    .new_game_form .name input{
+      width: 95%;
+      height: 25px;
+      font-size: 15px;
+      margin: 10px;
+    }
+  .new_game_form .url{
+    grid-area: url;
+  }
+    .new_game_form .url input{
+      width: 95%;
+      height: 25px;
+      font-size: 15px;
+      margin: 10px;
+    }
+  .new_game_form .category{
+    grid-area: category;
+  }
+    .new_game_form .category input{
+      width: 95%;
+      height: 25px;
+      font-size: 15px;
+      margin: 10px;
+    }
+  .new_game_form .submit{
+    grid-area: submit;
+    margin-top: 10px;
+  }
+    .new_game_form .submit input{
+      background-color: #ed8200;
+      border: none;
+      border-radius: 50px;
+      height: 50px;
+      width: 100%;
+      color: white;
+      font-size: 25px;
+      box-shadow:
+        2px 0 4px 0 rgba(0, 0, 0, 0.5),
+        2px 5px 5px 3px rgba(0, 0, 0, 0.6);
+    }
+      .new_game_form .submit input:hover{
+        background-color: #d67600;
+        color: #dbd9d9;
+        transform: translateY(5px);
+        box-shadow:
+          2px 0 4px 1px rgba(0, 0, 0, 1);
+      }
+// end of newgame
+
+// report info
+.report_info{
+}
+  .report_info .head{
+    display: grid;
+    grid-template-columns: 45% 50% 5%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "h1 . back";
+  }
+    .report_info .head h1{
+      grid-area: h1;
+    }
+    .report_info .back_button{
+      grid-area: back;
+    }
+  .report_info .table{
+
+  }
+    .report_info .table .report_data{
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-template-rows: auto;
+      grid-template-areas:
+      "reason time"
+      "notes notes";
+    }
+      .report_info .table h4{
+        padding-top: 5px;
+      }
+      .report_info .table .report_data .reason{
+        grid-area: reason;
+        display: flex;
+      }
+      .report_info .table .report_data .time{
+        grid-area: time;
+        display: flex;
+      }
+      .report_info .table .report_data .notes{
+        grid-area: notes;
+      }
+      .report_info .table .report_data:nth-child(even){
+        background-color: #d1d1d1;
+      }
+      .report_info h4{
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+// end report info
+
+// report form page
+.report{
+
+}
+  .report p{
+    margin-left: 20px;
+  }
+  .report .new_report{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "title title"
+    "creator url"
+    "form form";
+  }
+    .new_report #title{
+      grid-area: title;
+    }
+    .new_report .creator{
+      grid-area: creator;
+    }
+    .new_report .url{
+      grid-area: url;
+    }
+    .new_report #form{
+      grid-area: form;
+    }
+      .new_report #form .reason{
+
+      }
+        .new_report #form .reason select{
+          margin-left: 20px;
+          height: 50px;
+          width: 150px;
+          font-size: 15px;
+          border-radius: 15px;
+        }
+      .new_report #form .notes{
+        margin-bottom: 5px;
+      }
+        .new_report #form .notes textarea{
+          border-radius: 15px;
+          height: 200px;
+          width: 90%;
+          margin-left: 20px;
+          font-size: 15px;
+          resize: none;
+          padding: 10px;
+        }
+
+      .new_report #form .submit{
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+        .new_report #form .submit input{
+          background-color: #ed8200;
+          border: none;
+          border-radius: 50px;
+          height: 50px;
+          width: 100%;
+          color: white;
+          font-size: 25px;
+          box-shadow:
+            2px 0 4px 0 rgba(0, 0, 0, 0.5),
+            2px 5px 5px 3px rgba(0, 0, 0, 0.6);
+        }
+        .new_report #form .submit input:hover{
+          background-color: #d67600;
+          color: #dbd9d9;
+          transform: translateY(5px);
+          box-shadow:
+            2px 0 4px 1px rgba(0, 0, 0, 1);
+        }
+
+// end of report form page
+
+// playhistory page
+.play_history{
+}
+  .play_history .content{
+  }
+  .play_history h2{
+    margin-left: 10px;
+  }
+  .play_history .my_games_list{
+    list-style: none;
+    display: flex;
+    margin-bottom: 10px;
+  }
+// end playhistory section

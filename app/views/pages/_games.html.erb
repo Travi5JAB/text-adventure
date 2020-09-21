@@ -3,13 +3,15 @@
 
 <div class="games">
 
-  <div id = "game">
-    <a href="">
-      <p id = "slideinfo">
-        Text Adventure Game
-      </p>
+  <% @all_games.each do |l| -%>
+    <a href="/pages/<%=l.id%>" id="game">
+      <li class="game">
+        <p id="slideinfo">
+          <%=l.name%>
+        </p>
+      </li>
+      <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
     </a>
-    <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-  </div>
+  <% end %>
 
 </div>
