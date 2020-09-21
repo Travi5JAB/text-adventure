@@ -1,0 +1,82 @@
+<script>
+  function fullScreen() {
+    var element = document.getElementById("iframe");
+    if(element.classList == 'not_full'){
+      var scroll = document.querySelector("#iframe");
+      scroll.scrollIntoView();
+      element.classList.remove("not_full");
+      element.classList.add("full_screen");
+    }else{
+      var scroll = document.querySelector("#main");
+      scroll.scrollIntoView();
+      element.classList.remove("full_screen");
+      element.classList.add("not_full");
+    }
+  }
+</script>
+
+<div class="game_screen" id="main">
+  <div class="header">
+    <input value="Full Screen" type="button" name="button" onclick="return fullScreen()"/>
+    <h1 id="title"><%=@game.name%></h1>
+    <h3>Uploaded by: <a href="/profile/<%=@game.user_id%>"><%=@game.creator%></a></h3>
+  </div>
+  <div class="game_section">
+    <iframe class="not_full" id="iframe" src=<%=@webpage%> scrolling="no">
+      <p>Page did not render! Try Original Page</p>
+    </iframe>
+  </div>
+
+  <%= render :partial => "pages/footer" if controller_name == "pages" %>
+
+</div>
+
+<div class="rating" id="rating">
+  <h2>Rate this Game</h2>
+  <form class="star_group" action="/add_rating" method="post">
+    <input id="submit" type="submit" value="Submit" data-confirm="Submit Rating?">
+    <input type="text" name="rating[user_id]" value="<%=current_user.id%>" readonly hidden>
+    <input type="text" name="rating[game_id]" value="<%=@game.id%>" readonly hidden>
+
+    <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+    <label for="rating-5">5</label>
+    <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+    <label for="rating-4">4</label>
+    <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+    <label for="rating-3">3</label>
+    <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+    <label for="rating-2">2</label>
+    <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+    <label for="rating-1">1</label>
+    <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+    <label for="rating-0">0</label>
+
+  </form>
+</div>
+
+<div class="game_info">
+  <h2>Game Info</h2>
+  <div class="" id="flex">
+    <h3>Category:</h3>
+    <h4><%=@game.category%></h4>
+  </div>
+  <div class="">
+    Number or Ratings:
+    <%=@total_ratings.length%>
+  </div>
+  <div class="">
+    Average Rating:
+    <%=@avg%>
+  </div>
+  <div class="" id="flex">
+    <h3>Number of Reports:</h3>
+    <!-- nut the correct number  -->
+    <h4><%=@game.reports.length%></h4>
+  </div>
+  <a href="/report/<%=@game.id%>">Report this Game</a>
+  <div class="" id="flex">
+    <h3>Original Webpage:</h3>
+    <h4><a href="<%= @webpage %>" target="_blank" ><%= @webpage %></a></h4>
+  </div>
+  <p>Consider Visiting the orignal site.  Please <a href="/reportinfo/<%=@game.id%>"> review the number of reports and why</a> before visiting the site.</p>
+</div>

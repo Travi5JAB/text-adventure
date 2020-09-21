@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
+  # after sign in or sign up redirect to map page
+      def after_sign_in_path_for(user)
+         "/profile/#{current_user.id}"
+      end
+
+      def after_sign_up_path_for(user)
+         "/profile/#{current_user.id}"
+      end
+
   protected
 
   def configure_permitted_parameters

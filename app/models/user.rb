@@ -8,10 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
-  # def email_changed?
-  #   false
-  # end
-
 # log in not case sensative
   before_save do
     self.username.capitalize! if self.username
@@ -33,5 +29,9 @@ class User < ApplicationRecord
     cookies[:name] = current_user.username
     "/"
   end
+
+  has_many :games
+  has_many :ratings
+  has_many :reports
 
 end

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+game = Game.new
+game.name = 'Test Game'
+game.webpage = "https://travi5jab.github.io/from_class/pig-latin/piglatin.html"
+game.category = "test"
+game.creator = "Admin"
+game.save!
