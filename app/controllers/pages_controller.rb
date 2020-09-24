@@ -9,39 +9,26 @@ class PagesController < ApplicationController
 
   # profile.html.erb profile pages
   def profile
+    # find profile based on user
     @user = User.find(params[:id])
+
+    # all games belonging to user
     @my_games = Game.where('creator' => @user.username)
+    # my_games with reports and ratings
     @use = @my_games.includes(:reports, :ratings)
 
-    # all reports for the user
-    @total_reports = []
-    Report.find_each do |report|
-      Game.find_each do |game|
-        if report.game_id == game.id && game.user_id == @user.id
-          @total_reports << report
-        end
-      end
-    end
+    # my reports
+    @my_game_ids = @my_games.map{|game| game.id}
+    @my_reports = Report.where(game_id: @my_game_ids)
+    # my ratings
+    @my_ratings = Rating.where(game_id: @my_game_ids)
 
-    # all ratings for the user
-    @total_ratings = []
-    Rating.find_each do |rating|
-      if rating.user_id == @user.id
-        @total_ratings << rating.score
-      end
-    end
-    @all_game_avg = @total_ratings.sum.to_f/@total_ratings.length
+    # list of scores
+    @ratings_scores = @my_ratings.map{|rating| rating.score }
 
-    # rating each game
-    # @game_ratings = []
-    # Rating.find_each do |rating|
-    #   Game.find_each do |game|
-    #     if rating.game_id == game.id && @my_games.any?{ |v| v[:user_id] == game.user_id }
-    #       @game_ratings << rating
-    #     end
-    #   end
-    # end
-    # @avg = @game_ratings.sum/@game_ratings.length
+    # avg for all games
+    @all_game_avg = @ratings_scores.sum.to_f/@ratings_scores.length
+
   end
 
   # show.html.erb/ single game page
@@ -56,7 +43,12 @@ class PagesController < ApplicationController
         @total_ratings << rating.score.to_f
       end
     end
-    @avg = @total_ratings.sum/@total_ratings.length
+    if @total_ratings.length > 0
+      @avg = @total_ratings.sum/@total_ratings.length
+    else
+      @avg = 0
+    end
+
     # Rating.find_each do |rating|
     #   Game.find_each do |game|
     #     if rating.game_id == game.id && game.user_id == @game.user_id
@@ -81,6 +73,7 @@ class PagesController < ApplicationController
   def reportinfo
     @game = Game.find(params[:id])
     @report = Report.where('game_id' => @game.id)
+    @rating = Rating.where('game_id' => @game.id)
   end
 
   # create a new game (function on newgame.html.erb)
@@ -110,12 +103,15 @@ class PagesController < ApplicationController
     if @rating.valid? && Rating.where('user_id = ? and game_id = ?',@rating.user_id, @rating.game_id).blank?
       @rating.save
       redirect_to "/pages/#{@rating.game_id}"
+    elsif @rating.valid? && @rating.score == nil
+      redirect_to "/pages/#{@rating.game_id}", notice: "Cannot Rate 0. Try again."
     elsif @rating.valid?
-      redirect_to "/pages/#{@rating.game_id}", alert: "Can't Rate a Game More then Once"
+      @updated_rating = Rating.where('user_id = ? and game_id = ?',@rating.user_id, @rating.game_id)
+      @updated_rating.update(rating_params)
+      redirect_to "/pages/#{@rating.game_id}", notice: "Updated Rating. #{view_context.link_to("View Rating?", "/reportinfo/#{@rating.game_id}#ratings_table")}"
     else
       redirect_to "/pages/#{@rating.game_id}", alert: "Error has occued. Please try again"
     end
-    # render "show"
   end
 
 

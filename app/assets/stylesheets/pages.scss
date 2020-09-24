@@ -45,28 +45,33 @@
     margin: 10px;
     color: white;
     display: grid;
-    grid-template-columns: 25% 10% 65%;
+    grid-template-columns: 65% 35%;
     grid-template-rows: auto;
     grid-template-areas:
-    "h2 h2 ."
-    "stars . .";
+    "h2 ."
+    "stars .";
   }
     .rating h2{
       grid-area: h2;
     }
     .star_group {
       grid-area: stars;
+      display: flex;
       font-size: 0;
       unicode-bidi: bidi-override;
-      direction: rtl;
     }
-    .star_group * {
+      .stars{
+        direction: rtl;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    .stars * {
       font-size: 2rem;
     }
-    .star_group > .rating_radio {
+    .stars > .rating_radio {
       display: none;
     }
-    .star_group > input + label {
+    .stars > input + label {
       display: inline-block;
       overflow: hidden;
       text-indent: 9999px;
@@ -74,31 +79,31 @@
       white-space: nowrap;
       cursor: pointer;
     }
-    .star_group > input + label:before {
+    .stars > input + label:before {
       display: inline-block;
       text-indent: -9999px;
       content: "☆";
       color: #888;
     }
-    .star_group > input:checked ~ label:before, .star_group > input + label:hover ~ label:before, .star_group > input + label:hover:before {
+    .stars > input:checked ~ label:before, .stars > input + label:hover ~ label:before, .stars > input + label:hover:before {
       content: "★";
       color: #e52;
       text-shadow: 0 0 1px #333;
     }
-    .star_group > .star_clear + label {
+    .stars > .star_clear + label {
       text-indent: -9999px;
       width: .5em;
       margin-left: -.5em;
     }
-    .star_group > .star_clear + label:before {
+    .stars > .star_clear + label:before {
       width: .5em;
     }
-    .star_group:hover > input + label:before {
+    .stars:hover > input + label:before {
       content: "☆";
       color: #888;
       text-shadow: none;
     }
-    .star_group:hover > input + label:hover ~ label:before, .star_group:hover > input + label:hover:before {
+    .stars:hover > input + label:hover ~ label:before, .stars:hover > input + label:hover:before {
       content: "★";
       color: #e52;
       text-shadow: 0 0 1px #333;
@@ -106,6 +111,7 @@
     .rating .star_group #submit{
       background-color: #ed8200;
       border: none;
+      width: 150px;
       border-radius: 30px;
       height: 30px;
       color: white;
@@ -122,6 +128,13 @@
         box-shadow:
           2px 0 4px 1px rgba(0, 0, 0, 1);
       }
+    .star_group textarea{
+      width: 450px;
+      height: 50px;
+      resize: none;
+      margin-right: 50px;
+      direction: ltr;
+    }
   // end rating
 
   // game info section
@@ -241,6 +254,7 @@
 .report_info{
 }
   .report_info .head{
+    margin-top: 5px;
     display: grid;
     grid-template-columns: 45% 50% 5%;
     grid-template-rows: auto;
@@ -252,6 +266,7 @@
     }
     .report_info .back_button{
       grid-area: back;
+      margin-top: 15px;
     }
   .report_info .table{
 
@@ -268,7 +283,7 @@
       .report_info .table h4{
         padding-top: 5px;
       }
-      .report_info .table .report_data .reason{
+      .report_info .table .report_data #info{
         grid-area: reason;
         display: flex;
       }
@@ -281,6 +296,9 @@
       }
       .report_info .table .report_data:nth-child(even){
         background-color: #d1d1d1;
+      }
+      .report_info .table .report_data:nth-child(odd){
+        background-color: #ebebeb;
       }
       .report_info h4{
         margin-left: 15px;

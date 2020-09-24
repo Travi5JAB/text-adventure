@@ -1,20 +1,26 @@
 <div class="report_info" id="main">
+  <!-- content -->
   <div class="content" id="content">
+
+    <!-- reports -->
     <div class="head">
       <h1 id="title">Reports on <%=@game.name%></h1>
       <div class="back_button">
         <%= link_to "Back", :back %>
       </div>
     </div>
+
+    <!-- renders if no reports -->
     <% if @report.length == 0 %>
-      <h2>There are NO Reports on this Game</h2>
+      <h2>This Game has never been reported</h2>
     <% end %>
+
     <a href="/report/<%=@game.id%>">Report This Game</a>
     <hr>
-    <div class="table">
+    <div class="table" id="report_table">
       <% @report.each do |l| -%>
       <div class="report_data">
-        <li class = "reason">
+        <li class = "reason" id="info">
           <h2>Reason for Report:</h2>
           <h4><%=l.reason%></h4>
         </li>
@@ -23,13 +29,57 @@
           <!-- shorten this string -->
           <h4><%=l.created_at.to_s[0,16]%></h4>
         </li>
+        <% if l.notes.length > 0 %>
         <li class = "notes">
           <h2>Reporter Notes:</h2>
           <h4><%=l.notes%></h4>
         </li>
+        <% end %>
       </div>
       <% end %>
     </div>
+    <!-- end reports -->
+
+    <!-- ratings -->
+    <div class="head">
+      <h1 id="title">Ratings on <%=@game.name%></h1>
+      <div class="back_button">
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+
+    <!-- renders if no ratings -->
+    <% if @rating.length == 0 %>
+      <h2>This Game has no Ratings</h2>
+    <% end %>
+
+    <a href="/pages/<%=@game.id%>#rating">Rate This Game</a>
+    <hr>
+    <div class="table" id="ratings_table">
+      <% @rating.each do |l| -%>
+      <div class="report_data">
+        <li class = "score" id="info">
+          <h2>Score:</h2>
+          <h4><%=l.score%></h4>
+        </li>
+        <li class = "time">
+          <h2>Reported On:</h2>
+          <!-- shorten this string -->
+          <h4><%=l.created_at.to_s[0,16]%></h4>
+        </li>
+        <% if l.comment.length > 0 %>
+        <li class = "notes">
+          <h2>Notes:</h2>
+          <h4><%=l.comment%></h4>
+        </li>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <!-- end ratings -->
   </div>
+  <!-- end content -->
+
+  <!-- footer -->
   <%= render :partial => "pages/footer" if controller_name == "pages" %>
 </div>

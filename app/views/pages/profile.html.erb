@@ -9,33 +9,28 @@
   </div>
 
   <hr id = "titleBreak"/>
-  <h2><%=@user.username%>'s Games:</h2>
-  <div class="my_games_list">
-    <% @my_games.each do |l| -%>
-      <a href="/pages/<%=l.id%>" id="game">
-        <li class="game">
-          <p id="slideinfo">
-            <%=l.name%>
-          </p>
-        </li>
-        <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-      </a>
-    <% end %>
-  </div>
 
+  <!-- put all games uploaded by user -->
+  <%= render :partial => "pages/mygames" if controller_name == "pages" %>
+
+  <!-- footer -->
   <%= render :partial => "pages/footer" if controller_name == "pages" %>
 </div>
 <!-- end main div -->
 
 <div class="reports_shell">
-  <h1>Games Report</h1>
+  <h1 id="title">Games Report</h1>
   <h3>Number of Games: <%=@my_games.length%></h3>
   <h3>Number of Plays: <%=%></h3>
-  <h3>Number of Reports: <%=@total_reports.length%></h3>
-  <h3>Number of Ratings: <%=@total_ratings.length%></h3>
-  <h3>Average Rating: <%=@all_game_avg.round(2)%></h3>
+  <h3>Number of Reports: <%=@my_reports.length%></h3>
+  <h3>Number of Ratings: <%=@my_ratings.length%></h3>
+  <% if @all_game_avg > 0 %>
+    <h3>Average Rating: <%=@all_game_avg.round(2)%></h3>
+  <% end %>
   <hr>
-  <h1>Breakdown</h1>
+
+  <!-- game breakdown section -->
+  <h1 id="title">Breakdown</h1>
   <div class="games_report">
     <% @use.each do |game| %>
       <% @total = 0 %>

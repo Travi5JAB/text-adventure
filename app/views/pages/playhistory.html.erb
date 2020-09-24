@@ -1,24 +1,9 @@
-
 <div class = "play_history" id = "main">
   <div class="content" id="content">
     <h1 id="title">My Games</h1>
 
     <!-- put all games uploaded by user -->
-    <% if @my_games.length > 0 %>
-    <h2><%=current_user.username%>'s Games:</h2>
-    <div class="my_games_list">
-      <% @my_games.each do |l| -%>
-        <a href="/pages/<%=l.id%>" id="game">
-          <li class="game">
-            <p id="slideinfo">
-              <%=l.name%>
-            </p>
-          </li>
-          <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-        </a>
-      <% end %>
-    </div>
-    <% end %>
+    <%= render :partial => "pages/mygames" if controller_name == "pages" %>
 
     <!-- put all games played by user -->
     <% if @play_history.length > 0 %>
