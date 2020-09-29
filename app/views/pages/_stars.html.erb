@@ -1,0 +1,107 @@
+<!-- no rating -->
+<% if @total_ratings.length == 0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>
+
+<!-- rating of 1 -->
+<% if @total_ratings[0] == 1.0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label class="highlighted" for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>
+
+<!-- rating of 2 -->
+<% if @total_ratings[0] == 2.0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label class="highlighted" for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label class="highlighted" for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>
+
+<!-- rating of 3 -->
+<% if @total_ratings[0] == 3.0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label class="highlighted" for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label class="highlighted" for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label class="highlighted" for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>
+
+<!-- rating of 4 -->
+<% if @total_ratings[0] == 4.0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label class="highlighted" for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label class="highlighted" for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label class="highlighted" for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label class="highlighted" for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>
+
+<!-- rating of 5 -->
+<% if @total_ratings[0] == 5.0%>
+<div class="stars">
+  <input type="radio" id="rating-5" class="rating_radio" name="rating[score]" value="5" />
+  <label class="highlighted" for="rating-5">5</label>
+  <input type="radio" id="rating-4" class="rating_radio" name="rating[score]" value="4" />
+  <label class="highlighted" for="rating-4">4</label>
+  <input type="radio" id="rating-3" class="rating_radio" name="rating[score]" value="3" />
+  <label class="highlighted" for="rating-3">3</label>
+  <input type="radio" id="rating-2" class="rating_radio" name="rating[score]" value="2" />
+  <label class="highlighted" for="rating-2">2</label>
+  <input type="radio" id="rating-1" class="rating_radio" name="rating[score]" value="1" />
+  <label class="highlighted" for="rating-1">1</label>
+  <input type="radio" id="rating-0" class="rating_radio star_clear" name="rating[score]" value="0" />
+  <label for="rating-0">0</label>
+</div>
+<% end %>

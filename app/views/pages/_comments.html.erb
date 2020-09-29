@@ -1,0 +1,21 @@
+<% if @comments.length == 0 %>
+  <h2>No Comments on this Game</h2>
+<% end %>
+<div class="comments_thread">
+  <% @comments.each do |comment| %>
+    <div class="comment_bubble">
+      <li id="top_li">
+        <h3><a href="/profile/<%=comment.user_id%>"><%=comment.user.username%></a></h3>
+      </li>
+      <li id=comment_text>
+        <h3><%=comment.comment_text%></h3>
+      </li>
+    </div>
+    <div class="comment_time">
+      <li id=time>
+        <h3><%=comment.created_at.to_s[0,16]%></h3>
+      </li>
+    </div>
+  <% end %>
+
+</div>

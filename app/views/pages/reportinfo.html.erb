@@ -1,22 +1,30 @@
 <div class="report_info" id="main">
   <!-- content -->
   <div class="content" id="content">
+    <div class="" id="center">
+      <h1 id="title"><%=@game.name%></h1>
+    </div>
+    <h3>Uplaoded By: <a href="/profile/<%=@user.id%>"><%=@game.creator%></a></h3>
+    <h3>Number of Plays: </h3>
+    <h3>Times site was visited: </h3>
 
     <!-- reports -->
-    <div class="head">
+    <div class="head" id="report_head">
       <h1 id="title">Reports on <%=@game.name%></h1>
       <div class="back_button">
         <%= link_to "Back", :back %>
       </div>
+      <h3>Number of Reports: <%=@report.length%></h3>
     </div>
+
+    <a href="/report/<%=@game.id%>">Report This Game</a>
+    <hr>
 
     <!-- renders if no reports -->
     <% if @report.length == 0 %>
       <h2>This Game has never been reported</h2>
     <% end %>
 
-    <a href="/report/<%=@game.id%>">Report This Game</a>
-    <hr>
     <div class="table" id="report_table">
       <% @report.each do |l| -%>
       <div class="report_data">
@@ -41,20 +49,22 @@
     <!-- end reports -->
 
     <!-- ratings -->
-    <div class="head">
+    <div class="head" id="rating_head">
       <h1 id="title">Ratings on <%=@game.name%></h1>
       <div class="back_button">
         <%= link_to "Back", :back %>
       </div>
+      <h3>Number of Ratings: <%=@rating.length%></h3>
     </div>
+
+    <a href="/pages/<%=@game.id%>#rating">Rate This Game</a>
+    <hr>
 
     <!-- renders if no ratings -->
     <% if @rating.length == 0 %>
       <h2>This Game has no Ratings</h2>
     <% end %>
 
-    <a href="/pages/<%=@game.id%>#rating">Rate This Game</a>
-    <hr>
     <div class="table" id="ratings_table">
       <% @rating.each do |l| -%>
       <div class="report_data">
@@ -64,7 +74,6 @@
         </li>
         <li class = "time">
           <h2>Reported On:</h2>
-          <!-- shorten this string -->
           <h4><%=l.created_at.to_s[0,16]%></h4>
         </li>
         <% if l.comment.length > 0 %>
@@ -77,9 +86,27 @@
       <% end %>
     </div>
     <!-- end ratings -->
+
+    <!-- comments -->
+    <div class="head" id="comment_head">
+      <h1 id="title">Comments on <%=@game.name%></h1>
+      <div class="back_button">
+        <%= link_to "Back", :back %>
+      </div>
+      <h3>Number of Comments: <%=@comments.length%></h3>
+    </div>
+
+    <!-- enter render if no comments -->
+    <a href="/pages/<%=@game.id%>#rating">Comment on This Game</a>
+    <hr>
+
+    <!-- render partial - comments -->
+    <%= render :partial => "pages/comments" if controller_name == "pages" %>
+
+    <!-- end comments-->
   </div>
   <!-- end content -->
 
-  <!-- footer -->
+  <!-- render partial - footer -->
   <%= render :partial => "pages/footer" if controller_name == "pages" %>
 </div>

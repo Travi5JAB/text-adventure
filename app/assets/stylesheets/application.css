@@ -61,6 +61,9 @@ select:focus{
   width: 0px;
   height: 0px;
 }
+#center{
+  text-align: center;
+}
 
 /* main container */
 #main{

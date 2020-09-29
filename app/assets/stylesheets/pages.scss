@@ -15,7 +15,7 @@
     ". name ."
     "profile . fullScreen";
   }
-    .game_screen .header input{
+    .game_screen .header button{
       grid-area: fullScreen;
       margin-top: 10px;
       height: 20px;
@@ -87,7 +87,7 @@
     }
     .stars > input:checked ~ label:before, .stars > input + label:hover ~ label:before, .stars > input + label:hover:before {
       content: "★";
-      color: #e52;
+      color: #e1ff00;
       text-shadow: 0 0 1px #333;
     }
     .stars > .star_clear + label {
@@ -105,7 +105,7 @@
     }
     .stars:hover > input + label:hover ~ label:before, .stars:hover > input + label:hover:before {
       content: "★";
-      color: #e52;
+      color: #e1ff00;
       text-shadow: 0 0 1px #333;
     }
     .rating .star_group #submit{
@@ -135,11 +135,80 @@
       margin-right: 50px;
       direction: ltr;
     }
+    .stars .highlighted:before{
+      content: "★";
+      color: #ff1900;
+      text-shadow: 0 0 1px #333;
+    }
+    .stars > input + .highlighted:before {
+      content: "★";
+      color: #ff1900;
+      text-shadow: 0 0 1px #333;
+    }
+
   // end rating
+
+  // comments section
+  .comments{
+    margin-top: 20px;
+  }
+    .comments .comment_form{
+      margin: 10px;
+      display: grid;
+      grid-template-columns: 85% 15%;
+      grid-template-rows: 60px 35px;
+      grid-template-areas:
+      "text text"
+      ". submit";
+    }
+      .comments .comment_form textarea{
+        resize: none;
+        grid-area: text;
+        width: 100%;
+        height: 50px;
+      }
+      .comments .comment_form .button{
+        grid-area: submit;
+        background-color: #ed8200;
+        border: none;
+        width: 150px;
+        border-radius: 30px;
+        height: 30px;
+        color: white;
+        font-size: 25px;
+        box-shadow:
+          2px 0 4px 0 rgba(0, 0, 0, 0.5),
+          2px 5px 5px 3px rgba(0, 0, 0, 0.6);
+        margin-left: 30px;
+      }
+        .comments .comment_form .button:hover{
+          background-color: #d67600;
+          color: #dbd9d9;
+          transform: translateY(5px);
+          box-shadow:
+            2px 0 4px 1px rgba(0, 0, 0, 1);
+        }
+    // comments_thread
+    .comments_thread{
+      width: 95%;
+      margin: 10px;
+    }
+      .comments_thread .comment_bubble{
+        background-color: #ebebeb;
+        width:auto;
+        border-radius: 50px;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .comments_thread .comment_time{
+        text-align: right;
+      }
+  // end comments
 
   // game info section
   .game_info{
-    margin: 10px;
+    margin: 15px;
     color: white;
   }
     .game_info h4{
@@ -259,7 +328,8 @@
     grid-template-columns: 45% 50% 5%;
     grid-template-rows: auto;
     grid-template-areas:
-    "h1 . back";
+    "h1 . ."
+    "h3 . back";
   }
     .report_info .head h1{
       grid-area: h1;
@@ -267,6 +337,9 @@
     .report_info .back_button{
       grid-area: back;
       margin-top: 15px;
+    }
+    .report_info .head h3{
+      grid-area: h3;
     }
   .report_info .table{
 
