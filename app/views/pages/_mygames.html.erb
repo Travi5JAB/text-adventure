@@ -1,15 +1,8 @@
 <% if @my_games.length > 0 %>
 <h2><%=current_user.username%>'s Games:</h2>
 <div class="my_games_list">
-  <% @my_games.each do |l| -%>
-    <a href="/pages/<%=l.id%>" id="game">
-      <li class="game">
-        <p id="slideinfo">
-          <%=l.name%>
-        </p>
-      </li>
-      <%=image_tag("Text-game-logo.png", alt:"text game logo")%>
-    </a>
+  <% @my_games.each do |game_box| -%>
+    <%= render :partial => "pages/game_box", :object => game_box %>
   <% end %>
 </div>
 <% end %>

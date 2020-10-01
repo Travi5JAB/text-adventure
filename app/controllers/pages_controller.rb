@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   # index.html.erb/ home/ all_games page
   def index
+    set_game_image
     @all_games = Game.all
   end
 
@@ -15,6 +16,7 @@ class PagesController < ApplicationController
 
   # profile.html.erb profile pages
   def profile
+    set_game_image
     # find profile based on user
     @user = User.find(params[:id])
 
@@ -34,6 +36,16 @@ class PagesController < ApplicationController
 
     # avg for all games
     @all_game_avg = @ratings_scores.sum.to_f/@ratings_scores.length
+
+    # number of total visits to games
+    @visits = Ahoy::Event.where_properties("action = 'show'")
+    # @visits = []
+    # Ahoy::Event.find_each do |event|
+    #   property = event.properties
+    #   if property['action'] == 'show' && @my_game_ids.include?(property['id'].to_i)
+    #     p @visits << property['id'].to_i
+    #   end
+    # end
 
   end
 
@@ -57,6 +69,15 @@ class PagesController < ApplicationController
     @webpage = @game.webpage
     @comment_search = Comment.where('game_id' => @game.id)
     @comments = @comment_search.includes(:user).reverse
+
+    # number of visits to game
+    @visits = []
+    Ahoy::Event.find_each do |event|
+      property = event.properties
+      if property['action'] == 'show' && property['id'] == @game.id.to_s
+        @visits << property
+      end
+    end
 
     # all ratings for game
     @total_ratings = []
@@ -119,6 +140,22 @@ class PagesController < ApplicationController
     else
       redirect_to "/pages/#{@rating.game_id}", alert: "Error has occued. Please try again"
     end
+  end
+
+  def add_visit
+    p "HELLO"
+  end
+
+  # all variable sets
+  #set host location
+  def set_host
+    @host = 'localhost:3000'
+  end
+
+  #set default game image
+  def set_game_image
+    @game_image = "Text-game-logo.png"
+    # set up if statement
   end
 
 

@@ -21,7 +21,7 @@
 <div class="reports_shell">
   <h1 id="title">Games Report</h1>
   <h3>Number of Games: <%=@my_games.length%></h3>
-  <h3>Number of Plays: <%=%></h3>
+  <h3>Number of Plays: <%=@visits.length%></h3>
   <h3>Number of Reports: <%=@my_reports.length%></h3>
   <h3>Number of Ratings: <%=@my_ratings.length%></h3>
   <% if @all_game_avg > 0 %>
@@ -57,7 +57,7 @@
         </li>
 
         <li>
-          Plays:
+          Plays: <%= @visits.count(game.id) %>
         </li>
 
         <!-- click thru rate (visits to personal site) -->

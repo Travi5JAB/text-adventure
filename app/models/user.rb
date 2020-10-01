@@ -30,9 +30,12 @@ class User < ApplicationRecord
     "/"
   end
 
+  # associations
   has_many :games
   has_many :ratings
   has_many :reports
   has_many :comments
+
+  has_many :visits, class_name: "Ahoy::Visit"
 
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post 'add_game' => 'pages#add_game'
     post 'add_report' => 'pages#add_report'
     post 'add_rating' => 'pages#add_rating'
+    post 'add_visit' => 'pages#add_visit'
 
   root to: 'pages#index'
 end
